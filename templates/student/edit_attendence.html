@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Edit Attendance{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Edit Attendance</h2>
+  <form method="post" action="{{ url_for('student.edit_attendance', attendance_id=attendance.id) }}">
+    <label>Date</label>
+    <input type="date" name="date" value="{{ attendance.date.strftime('%Y-%m-%d') if attendance.date else '' }}" required>
+    <label>Present</label>
+    <input type="checkbox" name="present" {% if attendance.present %}checked{% endif %}>
+    <div style="margin-top:12px;">
+      <button type="submit" class="btn primary">Save</button>
+      <a href="{{ url_for('student.dashboard') }}" class="btn">Back</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
