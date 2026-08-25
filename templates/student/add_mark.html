@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Add Mark{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width:720px;">
+  <div class="card">
+    <h3>Add Mark</h3>
+    <p class="small">Record a new exam/assignment result</p>
+
+    <form method="post" action="{{ url_for('student.add_mark') }}">
+      <div style="margin:12px 0;">
+        <label>Subject</label><br>
+        <input name="subject" type="text" required value="{{ request.form.subject or '' }}" style="width:100%;padding:8px;border-radius:8px;border:1px solid #E6E9EE;">
+      </div>
+
+      <div style="display:flex;gap:12px;">
+        <div style="flex:1;">
+          <label>Marks Obtained</label><br>
+          <input name="marks_obtained" type="number" min="0" step="1" required value="{{ request.form.marks_obtained or '' }}" style="width:100%;padding:8px;border-radius:8px;border:1px solid #E6E9EE;">
+        </div>
+        <div style="flex:1;">
+          <label>Max Marks</label><br>
+          <input name="max_marks" type="number" min="1" step="1" required value="{{ request.form.max_marks or '' }}" style="width:100%;padding:8px;border-radius:8px;border:1px solid #E6E9EE;">
+        </div>
+      </div>
+
+      <div style="margin:12px 0;">
+        <label>Exam Date</label><br>
+        <input name="exam_date" type="date" value="{{ request.form.exam_date or '' }}" style="padding:8px;border-radius:8px;border:1px solid #E6E9EE;">
+      </div>
+
+      <div style="margin-top:14px;">
+        <button class="btn primary" type="submit">Save</button>
+        <a href="{{ url_for('student.dashboard') }}" class="btn" style="margin-left:8px;">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
