@@ -1,0 +1,28 @@
+<!-- templates/auth/login.html -->
+{% extends "base.html" %}
+{% block title %}Log in - EduMentor{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card p-4 shadow-sm">
+        <h3 class="mb-3">Log in</h3>
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" name="email"/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password"/>
+          </div>
+          <button class="btn btn-primary">Log in</button>
+        </form>
+        <hr/>
+        <small class="text-muted">New? <a href="{{ url_for('main.student_signup') }}">Create an account</a></small>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
