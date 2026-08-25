@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Add Attendance{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width:640px;">
+  <div class="card">
+    <h3>Add Attendance</h3>
+    <p class="small">Record attendance for a date</p>
+
+    <form method="post" action="{{ url_for('student.add_attendance') }}">
+      <div style="margin:12px 0;">
+        <label>Date</label><br>
+        <input name="date" type="date" required value="{{ request.form.date or '' }}" style="padding:8px;border-radius:8px;border:1px solid #E6E9EE;">
+      </div>
+
+      <div style="margin:12px 0;">
+        <label>
+          <input type="checkbox" name="present" value="1" {% if request.form.get('present') or request.method == 'GET' %}checked{% endif %}>
+          Present
+        </label>
+      </div>
+
+      <div style="margin-top:12px;">
+        <button class="btn primary" type="submit">Save</button>
+        <a href="{{ url_for('student.dashboard') }}" class="btn" style="margin-left:8px;">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
