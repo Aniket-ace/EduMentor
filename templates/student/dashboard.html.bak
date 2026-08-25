@@ -1,0 +1,6 @@
+﻿{% extends "base.html" %}
+{% block title %}Dashboard (debug){% endblock %}
+
+{% block content %}
+<p>DEBUG: dashboard template loaded successfully.</p>
+{% endblock %}
