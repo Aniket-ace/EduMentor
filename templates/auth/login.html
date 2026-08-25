@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+  <div style="max-width:600px; margin:24px auto;">
+    <div class="card">
+      <h2>Log in</h2>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul>
+            {% for cat, msg in messages %}
+              <li><strong>{{ cat }}</strong>: {{ msg }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <form method="post" action="{{ url_for('auth.login') }}">
+        <div style="margin-bottom:12px;">
+          <label>Email or username</label><br>
+          <input name="identifier" type="text" required style="width:100%;padding:8px;border-radius:6px;">
+        </div>
+
+        <div style="margin-bottom:12px;">
+          <label>Password</label><br>
+          <input name="password" type="password" required style="width:100%;padding:8px;border-radius:6px;">
+        </div>
+
+        <button class="btn primary" type="submit">Log in</button>
+        <a href="{{ url_for('auth.signup') }}" style="margin-left:12px;">Sign up</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
