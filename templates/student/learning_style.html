@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Learning Style{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width:640px;">
+  <div class="card">
+    <h3>Learning Style</h3>
+    <p class="small">Choose the learning style that fits you best</p>
+
+    <form method="post" action="{{ url_for('student.learning_style') }}">
+      <div style="margin:12px 0;">
+        <select name="learning_style" style="width:100%;padding:10px;border-radius:8px;border:1px solid #E6E9EE;">
+          <option value="">-- Select learning style --</option>
+          <option value="visual" {% if (request.form.learning_style or current_user.learning_style) == 'visual' %}selected{% endif %}>Visual</option>
+          <option value="auditory" {% if (request.form.learning_style or current_user.learning_style) == 'auditory' %}selected{% endif %}>Auditory</option>
+          <option value="kinesthetic" {% if (request.form.learning_style or current_user.learning_style) == 'kinesthetic' %}selected{% endif %}>Kinesthetic</option>
+          <option value="reading" {% if (request.form.learning_style or current_user.learning_style) == 'reading' %}selected{% endif %}>Reading / Writing</option>
+        </select>
+      </div>
+
+      <div style="margin-top:12px;">
+        <button class="btn primary" type="submit">Save</button>
+        <a href="{{ url_for('student.dashboard') }}" class="btn" style="margin-left:8px;">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
